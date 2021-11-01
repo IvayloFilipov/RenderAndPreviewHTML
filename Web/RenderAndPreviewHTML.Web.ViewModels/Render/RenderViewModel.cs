@@ -6,9 +6,10 @@
 
     public class RenderViewModel
     {
-        [Required(AllowEmptyStrings = false, ErrorMessage = "Plese insert your example HTML")]
+        public int Id { get; set; }
+
+        [Required(AllowEmptyStrings = false, ErrorMessage = "Plese insert your example HTML above")]
         [StringLength(MaxNumberCharacters, ErrorMessage = ContentLenghtErrorMessage, MinimumLength = MinNumberCharacters)]
-        [Display(Name = "Write down your HTML here!")]
         public string Content { get; set; }
     }
 }

@@ -2,17 +2,6 @@
 {
     using System.Reflection;
 
-    using RenderAndPreviewHTML.Data;
-    using RenderAndPreviewHTML.Data.Common;
-    using RenderAndPreviewHTML.Data.Common.Repositories;
-    using RenderAndPreviewHTML.Data.Models;
-    using RenderAndPreviewHTML.Data.Repositories;
-    using RenderAndPreviewHTML.Data.Seeding;
-    using RenderAndPreviewHTML.Services.Data;
-    using RenderAndPreviewHTML.Services.Mapping;
-    using RenderAndPreviewHTML.Services.Messaging;
-    using RenderAndPreviewHTML.Web.ViewModels;
-
     using Microsoft.AspNetCore.Builder;
     using Microsoft.AspNetCore.Hosting;
     using Microsoft.AspNetCore.Http;
@@ -21,7 +10,18 @@
     using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.DependencyInjection;
     using Microsoft.Extensions.Hosting;
-    using RenderAndPreviewHTML.Services.Data.Render;
+    using RenderAndPreviewHTML.Data;
+    using RenderAndPreviewHTML.Data.Common;
+    using RenderAndPreviewHTML.Data.Common.Repositories;
+    using RenderAndPreviewHTML.Data.Models;
+    using RenderAndPreviewHTML.Data.Repositories;
+    using RenderAndPreviewHTML.Data.Seeding;
+    using RenderAndPreviewHTML.Services.Data;
+    using RenderAndPreviewHTML.Services.Data.Check;
+    using RenderAndPreviewHTML.Services.Data.Save;
+    using RenderAndPreviewHTML.Services.Mapping;
+    using RenderAndPreviewHTML.Services.Messaging;
+    using RenderAndPreviewHTML.Web.ViewModels;
 
     public class Startup
     {
@@ -66,7 +66,8 @@
             // Application services
             services.AddTransient<IEmailSender, NullMessageSender>();
             services.AddTransient<ISettingsService, SettingsService>();
-            services.AddTransient<IRenderService, RenderService>();
+            services.AddTransient<ISaveService, SaveService>();
+            services.AddTransient<ICheckOriginalService, CheckOriginalService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

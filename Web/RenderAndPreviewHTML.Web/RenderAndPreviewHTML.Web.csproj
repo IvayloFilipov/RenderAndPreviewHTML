@@ -36,8 +36,4 @@
     <ProjectReference Include="..\RenderAndPreviewHTML.Web.Infrastructure\RenderAndPreviewHTML.Web.Infrastructure.csproj" />
     <ProjectReference Include="..\RenderAndPreviewHTML.Web.ViewModels\RenderAndPreviewHTML.Web.ViewModels.csproj" />
   </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Views\Render\" />
-  </ItemGroup>
 </Project>

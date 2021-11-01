@@ -21,6 +21,8 @@
   <ItemGroup>
     <ProjectReference Include="..\..\Data\RenderAndPreviewHTML.Data.Common\RenderAndPreviewHTML.Data.Common.csproj" />
     <ProjectReference Include="..\..\Data\RenderAndPreviewHTML.Data.Models\RenderAndPreviewHTML.Data.Models.csproj" />
+    <ProjectReference Include="..\..\Data\RenderAndPreviewHTML.Data\RenderAndPreviewHTML.Data.csproj" />
+    <ProjectReference Include="..\..\Web\RenderAndPreviewHTML.Web.ViewModels\RenderAndPreviewHTML.Web.ViewModels.csproj" />
     <ProjectReference Include="..\RenderAndPreviewHTML.Services.Mapping\RenderAndPreviewHTML.Services.Mapping.csproj" />
   </ItemGroup>
 

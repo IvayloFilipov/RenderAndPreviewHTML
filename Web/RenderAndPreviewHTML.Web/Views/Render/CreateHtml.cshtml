@@ -1,0 +1,59 @@
+﻿@using RenderAndPreviewHTML.Common;
+@model RenderAndPreviewHTML.Web.ViewModels.Render.RenderViewModel
+
+@{
+    ViewData["Title"] = "Write down your HTML here.";
+    ViewData["Title2"] = "Your HTML output here.";
+}
+
+<div class="row mb-4">
+    <div class="col-sm-12 offset-md-1 col-md-10 text-md-center offset-ld-2 col-ld-8 text-ld-center">
+        <h2>Using <b class="text-info">@GlobalConstants.SystemName</b> application you can write, render and save HTML into database.</h2>
+        <hr />
+    </div>
+</div>
+
+
+<div class="form-row">
+    <div class="form-group col-md-6">
+        <form method="post" asp-action="SaveHtml" asp-controller="Render">
+            <h6>@this.ViewData["Title"]</h6>
+            <textarea id="input" asp-for="Content" class="form-control" rows="10"></textarea>
+            <span asp-validation-for="Content" class="text-danger"></span>
+            <input type="hidden" name="id" value="@(Model?.Id??0)" />
+
+            <p class="text-primary mb-3">Press the button <b>RUN</b> to render the the HTML.</p>
+            <button id="runbtn" type="button" class="btn btn-primary text-uppercase mb-3">Run</button>
+        </form>
+
+        <p class="text-primary mb-3">Press the button <b>SAVE</b> to save the HTML you have written into the database.</p>
+        <button type="submit" class="btn btn-primary text-uppercase">Save</button>
+    </div>
+
+    <div class="form-group col-md-6">
+        <h6>@this.ViewData["Title2"]</h6>
+        <div id="output" contenteditable="false" style="width: 100%; height:56%; border: 1px solid #ccc; padding: 5px;"></div>
+        @*<textarea id="output" class="form-control" rows="10" readonly></textarea>*@
+
+        <p class="text-primary mb-3">Press the button <b>CHECK ORIGINAL</b> to check whether the HTML you have written is already exists into the database.</p>
+        <button type="submit" class="btn btn-primary text-uppercase">Check original</button>
+    </div>
+    <br />
+</div>
+
+@section scripts{
+    <script>
+        $(function () {
+            $('#runbtn').click(renderHtml);
+
+            // if preview an existing snippet
+            if ($('#input').val()) {
+                renderHtml();
+            }
+        });
+
+        function renderHtml() {
+            $('#output').html($('#input').val());
+        }
+    </script>
+}

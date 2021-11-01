@@ -1,9 +1,52 @@
-﻿@using RenderAndPreviewHTML.Common
-@{
-    this.ViewData["Title"] = "Home Page";
+﻿@{
+    this.ViewData["Title"] = "Render and preview HTML";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome to @GlobalConstants.SystemName!</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<div class="text-center mb-5">
+    <h2 class="display-4">Welcome to <b class="text-info">@this.ViewData["Title"]</b></h2>
+    <hr />
+</div>
+
+<div class="row">
+    <div class="col-sm-12 offset-md-1 col-md-10 text-md-center offset-ld-2 col-ld-8 text-ld-center">
+        <div class="card border-success">
+            <div class="card-body">
+                <h4 class="card-title text-center">General info about <b class="text-info">@this.ViewData["Title"]</b></h4>
+                <hr />
+                <br/>
+                <h5 class="card-text">
+                    This is an Asp.Net Core web application which can save and preview HTML code
+                    samples with the following functionality:
+                </h5>
+                <ul class="text-md-left">
+                    <li>
+                        Single screen with a text area to write HTML, a button "run" and an area to render the HTML.
+                    </li>
+                    <li>
+                        Examples could be saved to a relational database table along with their creation date and last
+                        edit date. The size of the HTML example can be up to 5MB.
+                    </li>
+                    <li>
+                        Include a "Save" button which saves the HTML example to the database.
+                    </li>
+                    <li>
+                        Optionally, you can set up the application to auto save when the user is typing in the text area
+                        and show an indication in the UI.
+                    </li>
+                    <li>
+                        A shareable URL of the saved example could be shown on the page or the browser address bar.
+                    </li>
+                    <li>
+                        Include a button "Check original" which could check if the current code matches the one of an
+                        example created earlier. Display a notification to the user whether this example is original on
+                        click.
+                    </li>
+                    <li>
+                        You can find the application as a public repository in GitHub wit MIT license and have a README file describing how to run it.
+                    </li>
+                </ul>
+                <p class="card-text"><small class="text-muted">Render and preview HTML application</small></p>
+            </div>
+        </div>
+    </div>
 </div>
