@@ -3,9 +3,8 @@ namespace RenderAndPreviewHTML.Data.Models
 {
     using System;
 
-    using RenderAndPreviewHTML.Data.Common.Models;
-
     using Microsoft.AspNetCore.Identity;
+    using RenderAndPreviewHTML.Data.Common.Models;
 
     public class ApplicationRole : IdentityRole, IAuditInfo, IDeletableEntity
     {

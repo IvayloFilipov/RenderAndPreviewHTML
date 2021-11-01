@@ -18,6 +18,7 @@
     using RenderAndPreviewHTML.Data.Seeding;
     using RenderAndPreviewHTML.Services.Data;
     using RenderAndPreviewHTML.Services.Data.Check;
+    using RenderAndPreviewHTML.Services.Data.Edit;
     using RenderAndPreviewHTML.Services.Data.Save;
     using RenderAndPreviewHTML.Services.Mapping;
     using RenderAndPreviewHTML.Services.Messaging;
@@ -68,6 +69,8 @@
             services.AddTransient<ISettingsService, SettingsService>();
             services.AddTransient<ISaveService, SaveService>();
             services.AddTransient<ICheckOriginalService, CheckOriginalService>();
+            services.AddTransient<IGetAllRecordsService, GetAllRecordsService>();
+            services.AddTransient<IEditHtmlService, EditHtmlService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

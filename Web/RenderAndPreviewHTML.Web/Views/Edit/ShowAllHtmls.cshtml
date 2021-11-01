@@ -1,0 +1,45 @@
+﻿@model IEnumerable<RenderAndPreviewHTML.Web.ViewModels.Edit.EditViewModel>
+
+@{
+    ViewData["Title"] = "Render and preview HTML";
+
+    int count = 1;
+}
+
+<div class="row mb-4">
+    <div class="col-sm-12 offset-md-1 col-md-10 text-md-center offset-ld-2 col-ld-8 text-ld-center">
+        <h2>This is a list of all Htmls, that <b class="text-info">@ViewData["Title"]</b> application store into the database.</h2>
+        <hr />
+        <p class="text-danger"><b>NOTE:</b> If the record was not modified, the column "Modified on" is empty.</p>
+    </div>
+</div>
+
+<div class="row">
+    <table class="table table-responsive-sm mt-4">
+        <thead class="table-info">
+            <tr>
+                <th scope="col">№</th>
+                <th scope="col">Content</th>
+                <th scope="col">Created on:</th>
+                <th scope="col">Modified on:</th>
+                <th scope="col">EDIT</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var html in Model)
+            {
+                <tr class="table-hover">
+                    <th scope="row">@(count++)</th>
+                    <td>@html.Content</td>
+                    <td>@html.CreatedOn</td>
+                    <td>@html.ModifiedOn</td>
+                    <td>
+                        <div class="align-content-lg-around float-md-none float-md-none">
+                            <a asp-controller="Render" asp-action="EditSelectedHtml" asp-route-id="@html.Id" class="btn btn-outline-primary btn-sm">Edit</a>
+                        </div>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
