@@ -15,10 +15,10 @@
 
 
 <div class="form-row">
-    <div class="form-group col-md-6">
+    <div class="form-group col-md-6" id="exampleHtml">
         <form method="post" asp-action="SaveHtml" asp-controller="Render">
             <h6>@this.ViewData["Title"]</h6>
-            <textarea id="input" asp-for="Content" class="form-control" rows="10"></textarea>
+            <textarea id="input" asp-for="Content" name="htmlInput" class="form-control" rows="10"></textarea>
             <span asp-validation-for="Content" class="text-danger"></span>
             <input type="hidden" name="id" value="@(Model?.Id??0)" />
 
@@ -33,10 +33,11 @@
     <div class="form-group col-md-6">
         <h6>@this.ViewData["Title2"]</h6>
         <div id="output" contenteditable="false" style="width: 100%; height:56%; border: 1px solid #ccc; padding: 5px;"></div>
-        @*<textarea id="output" class="form-control" rows="10" readonly></textarea>*@
 
         <p class="text-primary mb-3">Press the button <b>CHECK ORIGINAL</b> to check whether the HTML you have written is already exists into the database.</p>
-        <button type="submit" class="btn btn-primary text-uppercase">Check original</button>
+        <button id="check" type="button" class="btn btn-primary text-uppercase">
+            Check original
+        </button>
     </div>
     <br />
 </div>
@@ -56,4 +57,18 @@
             $('#output').html($('#input').val());
         }
     </script>
+
+    @*<script>
+        $(document).ready(function () {
+
+            //This function called when the button is clicked
+            $("#check").click(function () {
+
+                // val() method is used to get the values from 
+                // textarea and stored in txt variable
+                var txt = $("#input").val();
+                alert(txt);
+            });
+        });
+    </script>*@
 }
