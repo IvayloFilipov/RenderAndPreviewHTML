@@ -40,6 +40,7 @@
             }
 
             var htmlId = data.Id;
+
             if (data.Id > 0)
             {
                 // Handle Update

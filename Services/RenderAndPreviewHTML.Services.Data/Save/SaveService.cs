@@ -42,6 +42,7 @@
             }
 
             var existing = await this.dbContext.ExampleHtmls.FindAsync(id);
+
             if (existing is null)
             {
                 throw new ArgumentException("Invalid Id", nameof(id));
