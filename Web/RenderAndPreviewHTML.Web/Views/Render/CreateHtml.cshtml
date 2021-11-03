@@ -13,6 +13,10 @@
     </div>
 </div>
 
+<div class="form-row mb-3 text-md-center text-danger">
+    <b>@TempData["hasSame"]</b>
+    <b>@TempData["isUnique"]</b>
+</div>
 
 <div class="form-row">
     <div class="form-group col-md-6">
@@ -20,7 +24,7 @@
             <h6>@this.ViewData["Title"]</h6>
             <textarea id="input" asp-for="Content" class="form-control" rows="10"></textarea>
             <span asp-validation-for="Content" class="text-danger"></span>
-            <input type="hidden" name="id" value="@(Model?.Id??0)" />
+            <input type="hidden" id="hidden-id" name="id" value="@(Model?.Id??0)" />
 
             <p class="text-primary mb-3">Press the button <b>RUN</b> to render the the HTML.</p>
             <button id="runbtn" type="button" class="btn btn-primary text-uppercase mb-3">Run</button>
@@ -33,19 +37,24 @@
     <div class="form-group col-md-6">
         <h6>@this.ViewData["Title2"]</h6>
         <div id="output" contenteditable="false" style="width: 100%; height:56%; border: 1px solid #ccc; padding: 5px;"></div>
-        @*<textarea id="output" class="form-control" rows="10" readonly></textarea>*@
 
-        <p class="text-primary mb-3">Press the button <b>CHECK ORIGINAL</b> to check whether the HTML you have written is already exists into the database.</p>
-        <button id="check" type="submit" class="btn btn-primary text-uppercase">Check original</button>
+        <form method="post" asp-action="CheckOriginal" asp-controller="Render">
+            <input type="hidden" id="check-origin" asp-for="Content" class="form-control" />
+            <input type="hidden" id="check-origin-id" name="id" value="@(Model?.Id??0)" />
+
+            <p class="text-primary mb-3">Press the button <b>CHECK ORIGINAL</b> to check whether the HTML you have written is already exists into the database.</p>
+            <button id="checkbtn" type="submit" class="btn btn-primary text-uppercase">Check original</button>
+        </form>
     </div>
     <br />
 </div>
 
 @section scripts{
     <script>
+        // Render Html
         $(function () {
             $('#runbtn').click(renderHtml);
-            // if preview an existing snippet
+
             if ($('#input').val()) {
                 renderHtml();
             }
@@ -56,10 +65,24 @@
     </script>
 
     <script>
+        // Get value from textarea
+        $(function () {
+            $('#checkbtn').click(
+                function () {
+                    // Assign value if new
+                    $('#check-origin').val($('#input').val());
+                    // Assign value if edit existing one
+                    $('#check-origin-id').val($('#hidden-id').val())
+                }
+            );
+        });
+    </script>
+
+    @*<script>
         $(document).ready(function () {
 
             // This function called when the button is clicked
-            $("#check").click(function () {
+            $("#checkbtn").click(function () {
 
                 // val() method is used to get the values from
                 // textarea and stored in txt variable
@@ -69,5 +92,5 @@
                 alert(txt);
             });
         });
-    </script>
+    </script>*@
 }

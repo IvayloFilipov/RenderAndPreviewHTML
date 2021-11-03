@@ -3,6 +3,7 @@
     using System.Threading.Tasks;
 
     using Microsoft.AspNetCore.Mvc;
+    using RenderAndPreviewHTML.Services.Data.Check;
     using RenderAndPreviewHTML.Services.Data.Edit;
     using RenderAndPreviewHTML.Services.Data.Save;
     using RenderAndPreviewHTML.Web.ViewModels.Edit;
@@ -13,12 +14,14 @@
         private readonly ISaveService saveService;
         private readonly IEditHtmlService editHtmlService;
         private readonly IGetAllRecordsService getAllRecordsService;
+        private readonly ICheckOriginalService checkOriginalService;
 
-        public RenderController(ISaveService saveService, IEditHtmlService editHtmlService, IGetAllRecordsService getAllRecordsService)
+        public RenderController(ISaveService saveService, IEditHtmlService editHtmlService, IGetAllRecordsService getAllRecordsService, ICheckOriginalService checkOriginalService)
         {
             this.saveService = saveService;
             this.editHtmlService = editHtmlService;
             this.getAllRecordsService = getAllRecordsService;
+            this.checkOriginalService = checkOriginalService;
         }
 
         public IActionResult CreateHtml()
@@ -79,6 +82,27 @@
             await this.saveService.SaveHtmlAsync(currHtml.Content);
 
             return this.RedirectToAction(nameof(this.ShowAllHtmls));
+        }
+
+        public async Task<IActionResult> CheckOriginal(RenderViewModel data)
+        {
+            if (!this.ModelState.IsValid)
+            {
+                return this.RedirectToAction(nameof(this.ShowAllHtmls));
+            }
+
+            var htmlToCompare = await this.checkOriginalService.HasSameRecordAsync(data.Content);
+
+            if (htmlToCompare == true)
+            {
+                this.TempData["hasSame"] = "The Html already exists into the DB!";
+            }
+            else
+            {
+                this.TempData["isUnique"] = "The Html is unique!";
+            }
+
+            return this.View("CreateHtml", data);
         }
     }
 }
