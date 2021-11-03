@@ -41,8 +41,8 @@ This application is designed by using the **main** technologies below:
    9)  **[Razor Pages](https://docs.microsoft.com/en-us/aspnet/core/razor-pages/?view=aspnetcore-5.0&tabs=visual-studio)**
 
 ## **Tools Used**
-   10) **[MS Visual Studio 2019](https://code.visualstudio.com/)**
-   11) **[MS SQL Server Management Studio](https://docs.microsoft.com/en-us/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-ver15)**
+   1) **[MS Visual Studio 2019](https://code.visualstudio.com/)**
+   2) **[MS SQL Server Management Studio](https://docs.microsoft.com/en-us/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-ver15)**
 
 ## **How to run the application**
  1) You need to have MS SQL Server installed
