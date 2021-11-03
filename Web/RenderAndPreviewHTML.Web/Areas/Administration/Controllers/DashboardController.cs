@@ -1,9 +1,8 @@
 ﻿namespace RenderAndPreviewHTML.Web.Areas.Administration.Controllers
 {
+    using Microsoft.AspNetCore.Mvc;
     using RenderAndPreviewHTML.Services.Data;
     using RenderAndPreviewHTML.Web.ViewModels.Administration.Dashboard;
-
-    using Microsoft.AspNetCore.Mvc;
 
     public class DashboardController : AdministrationController
     {

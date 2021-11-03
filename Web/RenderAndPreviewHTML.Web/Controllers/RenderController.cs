@@ -39,7 +39,7 @@
         {
             if (!this.ModelState.IsValid)
             {
-                return this.View(data);
+                return this.RedirectToAction(nameof(this.EditSelectedHtml), new { id = data.Id });
             }
 
             var htmlId = data.Id;
@@ -76,7 +76,7 @@
         {
             if (!this.ModelState.IsValid)
             {
-                return this.View(currHtml);
+                return this.View(nameof(this.CreateHtml), currHtml);
             }
 
             await this.saveService.SaveHtmlAsync(currHtml.Content);
@@ -102,7 +102,7 @@
                 this.TempData["isUnique"] = "The Html is unique.";
             }
 
-            return this.View("CreateHtml", data);
+            return this.View(nameof(this.CreateHtml), data);
         }
     }
 }
