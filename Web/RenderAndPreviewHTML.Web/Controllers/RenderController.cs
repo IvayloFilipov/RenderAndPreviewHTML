@@ -95,11 +95,11 @@
 
             if (htmlToCompare == true)
             {
-                this.TempData["hasSame"] = "The Html already exists into the DB!";
+                this.TempData["hasSame"] = "The Html already exists into the DB.";
             }
             else
             {
-                this.TempData["isUnique"] = "The Html is unique!";
+                this.TempData["isUnique"] = "The Html is unique.";
             }
 
             return this.View("CreateHtml", data);
