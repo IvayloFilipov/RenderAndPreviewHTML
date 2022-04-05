@@ -58,7 +58,7 @@ This application is designed by using the **main** technologies below:
 [MIT](https://choosealicense.com/licenses/mit/)
 
 ## Author
-[IvayloFilipov](https://github.com/IvayloFilipov/BMS-BuildingManagementSystem)
+[IvayloFilipov](https://github.com/IvayloFilipov/RenderAndPreviewHTML)
 
 - LinkedIn: [Ivaylo Filipov](https://www.linkedin.com/in/ivaylo-filipov-44149420b/)
 
